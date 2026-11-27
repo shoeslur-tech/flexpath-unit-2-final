@@ -64,13 +64,12 @@ public class OrderController {
     /**
      * Updates an existing order.
      */
+    
     @PutMapping("/{id}")
     public Order update(@PathVariable int id,
-                        @RequestBody Order order,
-                        Principal principal) {
+                        @RequestBody Order order) {
 
         order.setId(id);
-        order.setUsername(principal.getName());
 
         Order updatedOrder = orderDao.updateOrder(order);
 
@@ -81,6 +80,7 @@ public class OrderController {
 
         return updatedOrder;
     }
+
 
     /**
      * Deletes an existing order by its ID.
